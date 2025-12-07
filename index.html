@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Glast RP - Serveur FiveM</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Canvas for subtle particles/nebula effect -->
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+        <div class="brand">
+            <div class="logo">Glast <span class="accent">RP</span></div>
+            <div class="tag">Serveur FiveM • Roleplay</div>
+        </div>
+
+        <nav class="main-nav" role="navigation" aria-label="Navigation principale">
+            <button class="nav-btn" data-section="home">Accueil</button>
+            <button class="nav-btn" data-section="about">Présentation</button>
+            <button class="nav-btn" data-section="rules">Règlement</button>
+            <button class="nav-btn" data-section="jobs">Métiers</button>
+            <button class="nav-btn" data-section="gallery">Galerie</button>
+            <button class="nav-btn" data-section="join">Nous rejoindre</button>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section id="home" class="panel active">
+            <h1>Bienvenue sur <span class="neon">Glast RP</span></h1>
+            <p class="lead">Serveur FiveM immersif — économie stable, staff actif, événements réguliers.</p>
+            <div class="actions">
+                <button class="cta" data-section="join">Rejoindre</button>
+                <a class="ghost" href="#" target="_blank" rel="noopener">Voir le trailer</a>
+            </div>
+        </section>
+
+        <section id="about" class="panel">
+            <h2>À propos</h2>
+            <p>Glast RP propose une expérience minimisé, pener pour tout nouveaux joueur. Des métiers variés et une communauté respectueuse. Systèmes optimisés avec des mapping exclusif ainsi que des scrpit / hud.</p>
+        </section>
+
+        <section id="rules" class="panel">
+            <h2>Règlement</h2>
+            <ul class="rules">
+                <li><strong>Respect</strong> entre les joueurs requis.</li>
+                <li><strong>Pas de HRP</strong> en zone RP.</li>
+                <li><strong>Pas d'exploitation</strong> ou de cheat.</li>
+                <li><strong>Fairplay</strong> dans tous les cas.</li>
+            </ul>
+        </section>
+
+        <section id="jobs" class="panel">
+            <h2>Métiers</h2>
+            <div class="jobs-grid">
+                <div class="job-card">👮 LSPD</div>
+                <div class="job-card">🚑 EMS</div>
+                <div class="job-card">🚗 Concessionnaire</div>
+                <div class="job-card">🔫 Armurerie</div>
+                <div class="job-card">💼 Gouvernement</div>
+                <div class="job-card">🕵️ FBI</div>
+                <div class="job-card">🚗 Mécano</div>
+                <div class="job-card">🍷 Vignero</div>
+                <div class="job-card">🏢 Agence Immo</div>
+            </div>
+        </section>
+
+        <section id="gallery" class="panel">
+            <h2>Galerie</h2>
+            <div class="gallery">
+                <img src="photo\glast ancien.png" alt="Glast Prime">
+                <img src="photo\anti social.png" alt="Capture 2">
+                <img src="photo\anti social2.png" alt="Capture 3">
+            </div>
+        </section>
+
+        <section id="join" class="panel">
+            <h2>Nous rejoindre</h2>
+            <p>Rejoins-nous sur Discord pour obtenir l'IP et les infos.</p>
+            <div class="join-actions">
+                <a class="join-btn" href="#" target="_blank" rel="noopener">Discord</a>
+                <a class="join-btn outline" href="#" target="_blank" rel="noopener">IP FiveM</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div>© nemzzzz 2025 Glast RP — Tous droits réservés</div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

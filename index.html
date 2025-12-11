@@ -92,178 +92,132 @@
 
     <script src="app.js"></script>
 
-   
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Owner Projet</title>
-  <style>
-    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:rgba(255,255,255,0.9)}
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#071024 0%, #0b1220 100%); color:var(--accent); margin:0; padding:24px}
-    h1{font-size:20px;margin:0 0 12px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); padding:12px; border-radius:12px}
-    .uploader{display:flex;gap:8px;align-items:center}
-    .preview{position:relative;width:220px;height:220px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,#0b1530,#00111a);display:flex;align-items:center;justify-content:center;color:var(--muted);margin:auto;}
-    .preview img{width:100%;height:100%;object-fit:cover;display:block}
-    .overlay{position:absolute;left:0;right:0;bottom:0;padding:10px;display:flex;gap:8px;align-items:center;justify-content:space-between;background:linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.55));backdrop-filter:blur(4px);}
-    .overlay .texts{display:flex;flex-direction:column}
-    .name{font-weight:700;font-size:16px;letter-spacing:0.2px}
-    .word{font-family:monospace;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,0.08);font-weight:600}
-    label{font-size:13px;color:var(--muted)}
-    input[type="file"]{display:block}
-    .inputs{display:flex;gap:8px;flex-direction:column;margin-top:8px}
-    .inputs input[type="text"]{padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--accent)}
-    .help{font-size:13px;color:#9aa4b2;margin-top:8px}
-    .footer{margin-top:18px;display:flex;gap:8px;align-items:center}
-    .btn{padding:10px 14px;border-radius:8px;border:none;background:#1f6feb;color:white;cursor:pointer}
-    .btn:disabled{opacity:0.5;cursor:not-allowed}
-    .error{color:#ffb4b4;font-size:13px}
-    @media (max-width:520px){.preview{height:180px}}
-  </style>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Galerie 5 Images</title>
+
+<style>
+    body{
+        margin:0;
+        padding:40px;
+        background: url('background.jpg') center/cover no-repeat fixed;
+        font-family: 'Inter', Arial, sans-serif;
+        color:white;
+    }
+
+    .container{
+        max-width:1000px;
+        margin:auto;
+        display:grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap:30px;
+    }
+
+    .card{
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(14px);
+        border:1px solid rgba(255,255,255,0.18);
+        border-radius:25px;
+        padding:25px 15px;
+        text-align:center;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    }
+
+    .icon-circle{
+        width:150px;
+        height:150px;
+        border-radius:50%;
+        overflow:hidden;
+        margin: auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow:0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    .icon-circle img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        border-radius:50%;
+    }
+
+    .name{
+        font-size:20px;
+        font-weight:600;
+        margin-top:15px;
+    }
+
+    .word{
+        margin-top:6px;
+        font-size:15px;
+        font-weight:700;
+        letter-spacing:3px;
+        background: rgba(255,255,255,0.15);
+        padding:6px 12px;
+        border-radius:8px;
+        display:inline-block;
+        font-family:monospace;
+    }
+</style>
 </head>
+
 <body>
-  <h1>owner</h1>
-  
-  <div class="grid" id="gallery"></div>
-  <div class="footer">
-    <button id="downloadBtn" class="btn">Télécharger la configuration (JSON)</button>
-    <div id="status" class="help"></div>
-  </div>
 
-  <script>
-    const MAX = 5;
-    const gallery = document.getElementById('gallery');
-    const status = document.getElementById('status');
-    const downloadBtn = document.getElementById('downloadBtn');
+<h1 style="text-align:center; margin-bottom:35px;">Galerie – 5 images</h1>
 
-    // Créer 5 cartes
-    for (let i=0;i<MAX;i++){
-      const card = document.createElement('div'); card.className='card';
-      card.innerHTML = `
-        <div class="uploader">
-          <div style="flex:1">
-            <label>Image ${i+1}</label>
-            <input type="file" accept="image/*" data-index="${i}" />
-            <div class="inputs">
-              <input type="text" placeholder="Nom (ex: Alice)" data-role="name" />
-              <input type="text" placeholder="Mot (5 lettres)" maxlength="5" data-role="word" />
-              <div class="error" data-role="error" aria-live="polite"></div>
-            </div>
-          </div>
+<div class="container">
+
+    <!-- ❗ CARD 1 -->
+    <div class="card">
+        <div class="icon-circle">
+            <img src="images/1.png" alt="Image 1">
         </div>
-        <div class="preview" data-index="${i}">
-          <div class="placeholder">Aucune image</div>
-          <div class="overlay" style="display:none">
-            <div class="texts">
-              <div class="name" data-role="overlay-name"></div>
-            </div>
-            <div class="word" data-role="overlay-word"></div>
-          </div>
+        <div class="name">Nom 1</div>
+        <div class="word">AAAAA</div>
+    </div>
+
+    <!-- ❗ CARD 2 -->
+    <div class="card">
+        <div class="icon-circle">
+            <img src="images/2.png" alt="Image 2">
         </div>
-      `;
-      gallery.appendChild(card);
-    }
+        <div class="name">Nom 2</div>
+        <div class="word">BBBBB</div>
+    </div>
 
-    // Gérer événements
-    gallery.querySelectorAll('input[type=file]').forEach(inp=>{
-      inp.addEventListener('change', onFileChange);
-    });
-    gallery.addEventListener('input', onTextInput);
+    <!-- ❗ CARD 3 -->
+    <div class="card">
+        <div class="icon-circle">
+            <img src="images/3.png" alt="Image 3">
+        </div>
+        <div class="name">Nom 3</div>
+        <div class="word">CCCCC</div>
+    </div>
 
-    function onFileChange(e){
-      const file = e.target.files[0];
-      const idx = e.target.dataset.index;
-      const preview = gallery.querySelector(`.preview[data-index='${idx}']`);
-      const overlay = preview.querySelector('.overlay');
-      if (!file) { // clear
-        preview.querySelector('img')?.remove();
-        overlay.style.display='none';
-        preview.querySelector('.placeholder').style.display='flex';
-        return;
-      }
-      const url = URL.createObjectURL(file);
-      preview.querySelector('.placeholder')?.remove();
-      const img = document.createElement('img'); img.src=url; img.alt=`Image ${parseInt(idx)+1}`;
-      // remove old
-      preview.querySelector('img')?.remove();
-      preview.insertBefore(img, preview.firstChild);
-      overlay.style.display='flex';
-      updateOverlay(idx);
-    }
+    <!-- ❗ CARD 4 -->
+    <div class="card">
+        <div class="icon-circle">
+            <img src="images/4.png" alt="Image 4">
+        </div>
+        <div class="name">Nom 4</div>
+        <div class="word">DDDDD</div>
+    </div>
 
-    function onTextInput(e){
-      const input = e.target.closest('input');
-      if(!input) return;
-      const card = input.closest('.card');
-      const idx = [...gallery.children].indexOf(card);
-      const errorNode = card.querySelector('[data-role=error]');
+    <!-- ❗ CARD 5 -->
+    <div class="card">
+        <div class="icon-circle">
+            <img src="images/5.png" alt="Image 5">
+        </div>
+        <div class="name">Nom 5</div>
+        <div class="word">EEEEE</div>
+    </div>
 
-      // validation mot 5 lettres (lettres uniquement)
-      if (input.getAttribute('data-role') === 'word'){
-        const val = input.value.trim();
-        if (val.length === 0){ errorNode.textContent=''; }
-        else if (!/^[A-Za-zÀ-ÖØ-öø-ÿ]{0,5}$/.test(val)){
-          errorNode.textContent = 'Uniquement des lettres autorisées.';
-        } else if (val.length !== 5){
-          errorNode.textContent = 'Le mot doit contenir exactement 5 lettres.';
-        } else {
-          errorNode.textContent = '';
-        }
-      }
-      updateOverlay(idx);
-    }
-
-    function updateOverlay(idx){
-      const card = gallery.children[idx];
-      const name = card.querySelector('[data-role=name]').value.trim();
-      const word = card.querySelector('[data-role=word]').value.trim();
-      const preview = card.querySelector('.preview');
-      const overlay = preview.querySelector('.overlay');
-      const overlayName = overlay.querySelector('[data-role=overlay-name]');
-      const overlayWord = overlay.querySelector('[data-role=overlay-word]');
-
-      overlayName.textContent = name || '';
-      overlayWord.textContent = word.toUpperCase() || '';
-
-      // show/hide overlay text depending on content
-      if ((preview.querySelector('img') || preview.querySelector('.placeholder')) && (name || word)){
-        overlay.style.display = 'flex';
-      } else {
-        // don't hide overlay if there's an image and texts exist
-        if (preview.querySelector('img') && (name || word)) overlay.style.display='flex';
-        else overlay.style.display='none';
-      }
-    }
-
-    // Télécharger configuration JSON
-    downloadBtn.addEventListener('click', ()=>{
-      const data = [];
-      let allGood = true;
-      gallery.querySelectorAll('.card').forEach((card, i)=>{
-        const fileInput = card.querySelector('input[type=file]');
-        const name = card.querySelector('[data-role=name]').value.trim();
-        const word = card.querySelector('[data-role=word]').value.trim();
-        const img = card.querySelector('.preview img');
-        const error = card.querySelector('[data-role=error]');
-        error.textContent = '';
-        if (img){
-          // check word validity
-          if (word.length !== 5 || !/^[A-Za-zÀ-ÖØ-öø-ÿ]{5}$/.test(word)){
-            error.textContent = 'Mot invalide: doit être 5 lettres.'; allGood=false; }
-          data.push({index:i, name:name || null, word: word || null, hasImage: true});
-        } else {
-          data.push({index:i, name:name || null, word: word || null, hasImage: false});
-        }
-      });
-      if(!allGood){ status.textContent = 'Corrigez les erreurs avant de télécharger.'; return; }
-      status.textContent = 'Prêt — configuration générée.';
-      const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a'); a.href=url; a.download='galerie-config.json'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    });
-
-  </script>
+</div>
 
 </body>
 </html>
